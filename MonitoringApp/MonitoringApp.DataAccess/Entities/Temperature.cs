@@ -1,6 +1,6 @@
 namespace MonitoringApp.DataAccess.Entities
 {
-    public partial class Temperature
+    public partial class Temperature : IEntity
     {
         public int Id { get; set; }
 

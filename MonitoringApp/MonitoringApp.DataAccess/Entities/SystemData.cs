@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MonitoringApp.DataAccess.Entities
 {
     [Table("SystemData")]
-    public partial class SystemData
+    public sealed partial class SystemData : IEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SystemData()
@@ -30,18 +30,18 @@ namespace MonitoringApp.DataAccess.Entities
 
         public DateTime? MeasurementDateTime { get; set; }
 
-        public float? VoltageAKB { get; set; }
+        public float? VoltageAkb { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Coordinate> Coordinates { get; set; }
+        public ICollection<Coordinate> Coordinates { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Flag> Flags { get; set; }
+        public ICollection<Flag> Flags { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FuelConsumption> FuelConsumptions { get; set; }
+        public ICollection<FuelConsumption> FuelConsumptions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Temperature> Temperatures { get; set; }
+        public ICollection<Temperature> Temperatures { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 namespace MonitoringApp.DataAccess.Entities
 {
-    public partial class FuelConsumption
+    public partial class FuelConsumption : IEntity
     {
         public int Id { get; set; }
 

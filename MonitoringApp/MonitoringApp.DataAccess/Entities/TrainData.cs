@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace MonitoringApp.DataAccess.Entities
 {
     [Table("TrainData")]
-    public partial class TrainData
+    public partial class TrainData : IEntity
     {
         public int Id { get; set; }
 

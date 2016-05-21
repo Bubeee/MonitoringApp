@@ -1,6 +1,6 @@
 namespace MonitoringApp.DataAccess.Entities
 {
-    public partial class Flag
+    public partial class Flag : IEntity
     {
         public int Id { get; set; }
 

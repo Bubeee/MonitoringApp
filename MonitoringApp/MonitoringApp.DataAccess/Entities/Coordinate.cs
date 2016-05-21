@@ -1,6 +1,6 @@
 namespace MonitoringApp.DataAccess.Entities
 {
-    public partial class Coordinate
+    public partial class Coordinate : IEntity
     {
         public int Id { get; set; }
 

@@ -7,7 +7,7 @@ using Microsoft.Synchronization.Data.SqlServer;
 
 namespace SyncExecutor
 {
-    internal class Program
+    public class SyncExecutor
     {
         static void Main(string[] args)
         {
