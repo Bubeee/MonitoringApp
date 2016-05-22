@@ -1,4 +1,6 @@
 using System.Data.Entity;
+using System.Linq;
+using Dapper;
 using MonitoringApp.DataAccess.Entities;
 
 namespace MonitoringApp.DataAccess.Contexts
@@ -42,6 +44,18 @@ namespace MonitoringApp.DataAccess.Contexts
                 .WithOptional(e => e.SystemData)
                 .HasForeignKey(e => e.RecordId)
                 .WillCascadeOnDelete();
+        }
+
+        public TrainData GetTrainObjectEntity(int systemSerialNo)
+        {
+            var query = "SELECT TOP 1 * FROM [dbo].[SystemData] AS [SD] " +
+                        "INNER JOIN [Temperatures] AS [T] ON [SD].[Id] = [T].[RecordId] " +
+                        "INNER JOIN [Flags] AS [F] ON [SD].[Id] = [F].[RecordId] " +
+                        "INNER JOIN [FuelConsumptions] AS [FC] ON [SD].[Id] = [FC].[RecordId] " +
+                        "INNER JOIN [Coordinates] AS [C] ON [SD].[Id] = [C].[RecordId] " +
+                        "ORDER BY [MeasurementDateTime] DESC";
+
+            return Database.Connection.Query<TrainData>(query).First();
         }
     }
 }

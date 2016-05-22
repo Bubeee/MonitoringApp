@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using MonitoringApp.DataAccess.Contexts;
+using MonitoringApp.DataAccess.Entities;
 
 namespace MonitoringApp.BLL
 {
@@ -15,7 +16,7 @@ namespace MonitoringApp.BLL
             }
         }
 
-        public List<int> GetObjectList()
+        public List<int> GetObjectIdList()
         {
             using (var dbContext = new MonitoringAppContext())
             {
@@ -23,6 +24,14 @@ namespace MonitoringApp.BLL
                     dbContext.SystemDatas.Select(data => data.SystemSerialNumber).GroupBy(i => i.Value).Select(ints => ints.Key);
 
                 return listOfSystemSerialNos.ToList();
+            }
+        }
+
+        public TrainData GetTrainObjectEntity(int systemSerialNo)
+        {
+            using (var dbConnection = new MonitoringAppContext())
+            {
+                return dbConnection.GetTrainObjectEntity(systemSerialNo);
             }
         }
     }

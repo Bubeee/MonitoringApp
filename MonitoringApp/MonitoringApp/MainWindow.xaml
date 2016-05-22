@@ -4,14 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MonitoringApp"
+        xmlns:viewModels="clr-namespace:MonitoringApp.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="619.737" Width="800">
+        Title="MainWindow" Height="619.737" Width="1000">
     <Grid>
-        <Menu x:Name="MainMenu" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="60">
-            <Grid Height="311" Width="240"/>
-        </Menu>
-        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="528,335,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="234,407,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_New" />
+                    <MenuItem Header="_Open" />
+                    <MenuItem Header="_Save" />
+                    <Separator />
+                    <MenuItem Header="_Exit" />
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        <DataGrid Name="TrainsDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True" ItemsSource="{Binding ObjectCollectionViewModels}" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="TrainsDataGrid_OnSelectionChanged"  ColumnHeaderHeight="50" LoadingRow="TrainsDataGrid_OnLoadingRow">
+            <DataGrid.AutoGenerateColumns>False</DataGrid.AutoGenerateColumns>
+            <!--<DataGrid.DataContext>
+                <viewModels:ObjectDataViewModelCollectionWrapper/>
+            </DataGrid.DataContext>-->
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="SizeToCells" Header="Серийный номер сисемы" Binding="{Binding SystemSerialNumber}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Номер пакета" Binding="{Binding PackageNumber}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Провайдер" Binding="{Binding ProviderName}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Система работает" Binding="{Binding IsSystemWorking}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Дата получения" Binding="{Binding MeasurementDateTime}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Внешняя температура" Binding="{Binding EnvironmentTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура 1го радиатора" Binding="{Binding Radiator1Temperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура 2го радиатора" Binding="{Binding Radiator2Temperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура подножки машиниста" Binding="{Binding FootstepTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура турбины" Binding="{Binding TurbineTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура масла" Binding="{Binding OilTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура трансформатора" Binding="{Binding TransformatorTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Температура в кабине" Binding="{Binding CabinTemperature}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Напряжение аккумулятора" Binding="{Binding VoltageAKB}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Потребление топлива подогревателя 1" Binding="{Binding Heater1FuelConsumption}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Потребление топлива подогревателя 2" Binding="{Binding Heater2FuelConsumption}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Потребление топлива подогревателя воздушного отопителя" Binding="{Binding AirHeaterFuelConsumption}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Флаги 1го подогревателя" Binding="{Binding Heater1Flags}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Флаги 2го подогревателя" Binding="{Binding Heater2Flags}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Флаги подогревателя воздушного отопителя" Binding="{Binding AirHeaterFlags}" />
+                <DataGridTextColumn Width="SizeToCells" Header="Флаги системы" Binding="{Binding SystemFlags}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="499,335,0,0" VerticalAlignment="Top" Width="75" Click="button_Click" Grid.Column="1"/>
+        <ToolBar x:Name="toolBar" HorizontalAlignment="Left" Margin="159,-10,0,0" VerticalAlignment="Top" Grid.Column="1"/>
 
     </Grid>
 </Window>

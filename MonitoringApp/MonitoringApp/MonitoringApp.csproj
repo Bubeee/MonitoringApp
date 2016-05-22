@@ -88,6 +88,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Mappers\ITrainDataMapper.cs" />
+    <Compile Include="Mappers\TrainDataMapper.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewModels\ObjectDataViewModel.cs" />
+    <Compile Include="ViewModels\ObjectDataViewModelCollectionWrapper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -140,9 +145,7 @@
       <Name>MonitoringApp.DataAccess</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
