@@ -5,7 +5,7 @@ namespace MonitoringApp.Mappers
 {
     public class TrainDataMapper : ITrainDataMapper
     {
-        public ObjectDataViewModel Map(TrainData data)
+        public ObjectDataViewModel Map(TrainDataCollectedEntity data)
         {
             return new ObjectDataViewModel
             {
@@ -29,7 +29,9 @@ namespace MonitoringApp.Mappers
                 Heater1Flags = data.Heater1Flags,
                 Heater2Flags = data.Heater2Flags,
                 AirHeaterFlags = data.AirHeaterFlags,
-                SystemFlags = data.SystemFlags
+                SystemFlags = data.SystemFlags,
+                Latitude = data.Latitude,
+                Longtitude = data.Longtitude
             };
         }
     }

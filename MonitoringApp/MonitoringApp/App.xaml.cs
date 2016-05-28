@@ -13,7 +13,7 @@ namespace MonitoringApp
         {
             base.OnStartup(e);
             IKernel kernel = new StandardKernel(new TrainsNinjectModule());
-            kernel.Get<MainWindow>().Show();
+            kernel.Get<AuthenticationWindow>().Show();
         }
     }
 }

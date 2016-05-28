@@ -9,13 +9,13 @@ namespace DataSyncronizer
     {
         static void Main(string[] args)
         {
-            // connect to server database
+            // Соединиться с сервером
             var serverConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TrainsMonitorDb"].ConnectionString);
 
-            // define a new scope named TrainsSyncScope
+            // Создать рамки синхронизации 
             var scopeDesc = new DbSyncScopeDescription("TrainsSyncScope");
 
-            // get the description of the Products table from SyncDB dtabase
+            // Получить описание таблиц базы данных сервера
             var tableDesc1 = SqlSyncDescriptionBuilder.GetDescriptionForTable("SystemData", serverConn);
             var tableDesc2 = SqlSyncDescriptionBuilder.GetDescriptionForTable("Coordinates", serverConn);
             var tableDesc3 = SqlSyncDescriptionBuilder.GetDescriptionForTable("Temperatures", serverConn);
@@ -23,7 +23,7 @@ namespace DataSyncronizer
             var tableDesc5 = SqlSyncDescriptionBuilder.GetDescriptionForTable("FuelConsumptions", serverConn);
             var tableDesc6 = SqlSyncDescriptionBuilder.GetDescriptionForTable("TrainData", serverConn);
 
-            // add the table description to the sync scope definition
+            // Добавить описание таблиц в рамки синхронизации
             scopeDesc.Tables.Add(tableDesc1);
             scopeDesc.Tables.Add(tableDesc2);
             scopeDesc.Tables.Add(tableDesc3);
@@ -31,13 +31,12 @@ namespace DataSyncronizer
             scopeDesc.Tables.Add(tableDesc5);
             scopeDesc.Tables.Add(tableDesc6);
 
-            // create a server scope provisioning object based on the ProductScope
+            // Создать провайдера синхронизации
             var serverProvision = new SqlSyncScopeProvisioning(serverConn, scopeDesc);
 
-            // skipping the creation of table since table already exists on server
             serverProvision.SetCreateTableDefault(DbSyncCreationOption.Skip);
 
-            // start the provisioning process
+            // Начать процесс настройки синхронизации
             serverProvision.Apply();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using System.Data.Entity.Infrastructure;
 using MonitoringApp.BLL;
 using MonitoringApp.Mappers;
+using MonitoringApp.SyncExecutor;
 using Ninject.Modules;
 
 namespace MonitoringApp.Infrastructure
@@ -12,6 +13,8 @@ namespace MonitoringApp.Infrastructure
             Bind<ITrainsService>().To<TrainsService>();
             Bind<IDbConnectionFactory>().To<SqlCeConnectionFactory>();
             Bind<ITrainDataMapper>().To<TrainDataMapper>();
+            Bind<IAuthenticationModule>().To<KeyAuthenticationModule>();
+            Bind<ISyncExecutor>().To<SyncExecutor.SyncExecutor>();
         }
     }
 }

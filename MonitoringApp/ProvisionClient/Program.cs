@@ -8,19 +8,19 @@ namespace ProvisionClient
     {
         static void Main(string[] args)
         {
-            // create a connection to the SyncExpressDB database
+            // создание соединения с базой данных клиента
             var clientConn = new SqlConnection(ConfigurationManager.ConnectionStrings["MonitoringAppDb"].ConnectionString);
-            
-            // create a connection to the SyncDB server database
+
+            // создание соединения с базой данных сервера
             var serverConn = new SqlConnection(ConfigurationManager.ConnectionStrings["TrainsMonitorDb"].ConnectionString);
 
-            // get the description of ProductsScope from the SyncDB server database
+            // получение информации о рамках синхронизации баз данных
             var scopeDesc = SqlSyncDescriptionBuilder.GetDescriptionForScope("TrainsSyncScope", serverConn);
 
-            // create server provisioning object based on the ProductsScope
+            // создание провайдера синхронизации на стороне клиента
             var clientProvision = new SqlSyncScopeProvisioning(clientConn, scopeDesc);
 
-            // starts the provisioning process
+            // применение настроек провайдера синхронизации к клиенту
             clientProvision.Apply();
         }
     }

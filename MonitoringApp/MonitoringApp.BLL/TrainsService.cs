@@ -20,18 +20,15 @@ namespace MonitoringApp.BLL
         {
             using (var dbContext = new MonitoringAppContext())
             {
-                var listOfSystemSerialNos =
-                    dbContext.SystemDatas.Select(data => data.SystemSerialNumber).GroupBy(i => i.Value).Select(ints => ints.Key);
-
-                return listOfSystemSerialNos.ToList();
+                return dbContext.GetObjectIdList();
             }
         }
 
-        public TrainData GetTrainObjectEntity(int systemSerialNo)
+        public TrainDataCollectedEntity GetTrainObjectEntity(int systemSerialNo)
         {
-            using (var dbConnection = new MonitoringAppContext())
+            using (var dbContext = new MonitoringAppContext())
             {
-                return dbConnection.GetTrainObjectEntity(systemSerialNo);
+                return dbContext.GetTrainObjectEntity(systemSerialNo);
             }
         }
     }

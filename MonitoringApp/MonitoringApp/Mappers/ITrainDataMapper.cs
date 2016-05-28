@@ -5,6 +5,6 @@ namespace MonitoringApp.Mappers
 {
     public interface ITrainDataMapper
     {
-        ObjectDataViewModel Map(TrainData data);
+        ObjectDataViewModel Map(TrainDataCollectedEntity data);
     }
 }

@@ -7,6 +7,6 @@ namespace MonitoringApp.BLL
     {
         List<T> GetEntities<T>() where T : class;
         List<int> GetObjectIdList();
-        TrainData GetTrainObjectEntity(int systemSerialNo);
+        TrainDataCollectedEntity GetTrainObjectEntity(int systemSerialNo);
     }
 }
