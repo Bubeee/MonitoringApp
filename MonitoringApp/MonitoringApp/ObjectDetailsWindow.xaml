@@ -1,0 +1,72 @@
+﻿<Window x:Class="MonitoringApp.ObjectDetailsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MonitoringApp"
+        mc:Ignorable="d"
+        Title="Детальная информация об объекте" Height="367" Width="1259"
+        Loaded="ObjectDetails_OnLoaded">
+    <Grid>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_Файл">
+                    <MenuItem Header="_Построить график расхода топлива" Click="MenuItemChart_OnClick"></MenuItem>
+                    <MenuItem Header="_Сохранить данные в Excel-файл" Click="MenuItem_OnClick"></MenuItem>
+                    <Separator></Separator>
+                    <MenuItem Header="_Закрыть окно" Click="MenuItemClose_OnClick"/>
+                </MenuItem>
+            </Menu>
+            <DataGrid Name="ObjectDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True" ItemsSource="{Binding ObjectCollectionViewModels}" SelectionMode="Single" SelectionUnit="FullRow"  ColumnHeaderHeight="50" LoadingRow="TrainsDataGrid_OnLoadingRow" DockPanel.Dock="Left">
+                <DataGrid.AutoGenerateColumns>False</DataGrid.AutoGenerateColumns>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Серийный номер сисемы" Binding="{Binding SystemSerialNumber}" />
+                    <DataGridTextColumn Header="Номер пакета" Binding="{Binding PackageNumber}" />
+                    <DataGridTextColumn Header="Провайдер" Binding="{Binding ProviderName}" />
+                    <DataGridTextColumn Header="Система работает" Binding="{Binding IsSystemWorking}" />
+                    <DataGridTextColumn Header="Дата получения" Binding="{Binding MeasurementDateTime}" />
+                    <DataGridTextColumn Header="Широта" Binding="{Binding Latitude}" />
+                    <DataGridTextColumn Header="Долгота" Binding="{Binding Longtitude}" />
+                    <DataGridTextColumn Header="Внешняя температура" Binding="{Binding EnvironmentTemperature}" />
+                    <DataGridTextColumn Header="Температура 1го радиатора" Binding="{Binding Radiator1Temperature}" />
+                    <DataGridTextColumn Header="Температура 2го радиатора" Binding="{Binding Radiator2Temperature}" />
+                    <DataGridTextColumn Header="Температура подножки машиниста" Binding="{Binding FootstepTemperature}" />
+                    <DataGridTextColumn Header="Температура турбины" Binding="{Binding TurbineTemperature}" />
+                    <DataGridTextColumn Header="Температура масла" Binding="{Binding OilTemperature}" />
+                    <DataGridTextColumn Header="Температура трансформатора" Binding="{Binding TransformatorTemperature}" />
+                    <DataGridTextColumn Header="Температура в кабине" Binding="{Binding CabinTemperature}" />
+                    <DataGridTextColumn Header="Напряжение аккумулятора" Binding="{Binding VoltageAKB}" />
+
+                    <DataGridTextColumn Header="Подогреватель №1 вкл" Binding="{Binding Heater1On}" />
+                    <DataGridTextColumn Header="Потребление топлива подогревателя 1" Binding="{Binding Heater1FuelConsumption}" />
+                    <DataGridTextColumn Header="Подогреватель №1 отказы" Binding="{Binding Heater1Denials}" />
+                    <DataGridTextColumn Header="Система водяного подогрева вкл" Binding="{Binding Heater1WaterHeatSystemOn}" />
+                    <DataGridTextColumn Header="Циркуляционный насос для подогревателя №1 вкл" Binding="{Binding Heater1CirculationPumpOn}" />
+                    <DataGridTextColumn Header="Питание циркуляционного насоса есть" Binding="{Binding Heater1CirculationPumpVoltageOn}" />
+                    <DataGridTextColumn Header="Номер ошибки" Binding="{Binding Heater1ErrorNumber}" />
+
+                    <DataGridTextColumn Header="Подогреватель №2 вкл" Binding="{Binding Heater2On}" />
+                    <DataGridTextColumn Header="Потребление топлива подогревателя 2" Binding="{Binding Heater2FuelConsumption}" />
+                    <DataGridTextColumn Header="Подогреватель №2 отказы" Binding="{Binding Heater2Denials}" />
+                    <DataGridTextColumn Header="Система водяного подогрева вкл" Binding="{Binding Heater2WaterHeatSystemOn}" />
+                    <DataGridTextColumn Header="Циркуляционный насос для подогревателя №2 вкл" Binding="{Binding Heater2CirculationPumpOn}" />
+                    <DataGridTextColumn Header="Питание циркуляционного насоса есть" Binding="{Binding Heater2CirculationPumpVoltageOn}" />
+                    <DataGridTextColumn Header="Номер ошибки" Binding="{Binding Heater2ErrorNumber}" />
+
+                    <DataGridTextColumn Header="Система воздушного подогрева вкл" Binding="{Binding AirHeatSystemOn}" />
+                    <DataGridTextColumn Header="Потребление топлива подогревателя воздушного отопителя" Binding="{Binding AirHeaterFuelConsumption}" />
+                    <DataGridTextColumn Header="Воздушный отопитель вкл" Binding="{Binding AirHeaterOn}" />
+                    <DataGridTextColumn Header="Воздушный подогреватель отказы" Binding="{Binding AirHeaterDenials}" />
+                    <DataGridTextColumn Header="Номер ошибки" Binding="{Binding AirHeaterErrorNumber}" />
+
+                    <DataGridTextColumn Header="Питание +24В есть" Binding="{Binding V24PowerOn}" />
+                    <DataGridTextColumn Header="Питание +110В есть" Binding="{Binding V110PowerOn}" />
+                    <DataGridTextColumn Header="Питание 220В есть" Binding="{Binding V220PowerOn}" />
+                    <DataGridTextColumn Header="АКБ заражается" Binding="{Binding AkbChargeOn}" />
+                    <DataGridTextColumn Header="Дизель вкл" Binding="{Binding DieselOn}" />
+                    <DataGridTextColumn Header="Локомотив движется" Binding="{Binding TrainIsMoving}" />
+                </DataGrid.Columns>
+            </DataGrid>
+        </DockPanel>
+    </Grid>
+</Window>

@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvisionServer", "Provisio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvisionClient", "ProvisionClient\ProvisionClient.csproj", "{ADB97988-923F-4CC9-9114-9478521ADD87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncExecutor", "SyncExecutor\SyncExecutor.csproj", "{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitoringApp.BLL", "MonitoringApp.BLL\MonitoringApp.BLL.csproj", "{CA27D1AE-4013-4496-BEB6-B7B775F53BF6}"
 EndProject
 Global
@@ -55,14 +53,6 @@ Global
 		{ADB97988-923F-4CC9-9114-9478521ADD87}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ADB97988-923F-4CC9-9114-9478521ADD87}.Release|x64.ActiveCfg = Release|x64
 		{ADB97988-923F-4CC9-9114-9478521ADD87}.Release|x64.Build.0 = Release|x64
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Debug|x64.ActiveCfg = Debug|x64
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Debug|x64.Build.0 = Debug|x64
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Release|x64.ActiveCfg = Release|x64
-		{3FF849E4-55C3-4BE7-B5BF-24F8A81856CF}.Release|x64.Build.0 = Release|x64
 		{CA27D1AE-4013-4496-BEB6-B7B775F53BF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CA27D1AE-4013-4496-BEB6-B7B775F53BF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA27D1AE-4013-4496-BEB6-B7B775F53BF6}.Debug|x64.ActiveCfg = Debug|Any CPU

@@ -1,35 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using MonitoringApp.DataAccess.Contexts;
 using MonitoringApp.DataAccess.Entities;
+using MonitoringApp.DataAccess.Repositories;
 
 namespace MonitoringApp.BLL
 {
     public class TrainsService : ITrainsService
     {
-        List<T> ITrainsService.GetEntities<T>()
-        {
-            using (var dbContext = new MonitoringAppContext())
-            {
-                var listOfEntities = dbContext.Set<T>().ToList();
-                return listOfEntities;
-            }
-        }
+        private readonly IRepository _repository;
 
+        public TrainsService(IRepository repository)
+        {
+            _repository = repository;
+        }
+        
         public List<int> GetObjectIdList()
         {
-            using (var dbContext = new MonitoringAppContext())
-            {
-                return dbContext.GetObjectIdList();
-            }
+            return _repository.GetObjectIdList();
         }
 
         public TrainDataCollectedEntity GetTrainObjectEntity(int systemSerialNo)
         {
-            using (var dbContext = new MonitoringAppContext())
-            {
-                return dbContext.GetTrainObjectEntity(systemSerialNo);
-            }
+            return _repository.GetTrainObjectEntity(systemSerialNo);
+        }
+
+        public List<TrainDataCollectedEntity> GetTrainObjectPackages(int systemSerialNo, DateTime from, DateTime to)
+        {
+            return _repository.GetTrainObjectDataCollectedEntities(systemSerialNo, from, to).ToList();
         }
     }
 }

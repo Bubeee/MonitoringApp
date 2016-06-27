@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:cm="clr-namespace:System.ComponentModel;assembly=System"
         mc:Ignorable="d"
-        Title="MainWindow" Width="1130" Height="434"
+        Title="Мониторинг железнодорожного транспорта" Width="1130" Height="434"
         Loaded="MainWindow_OnLoaded">
     <Window.Resources>
         <cm:BackgroundWorker x:Key="BackgroundWorker" WorkerReportsProgress="True" WorkerSupportsCancellation="True"
@@ -16,14 +16,14 @@
         <DockPanel>
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="_Файл">
-                    <MenuItem Header="_Обновить базу" Click="MenuItem_Click" />
+                    <MenuItem Name="UpdateButton" Header="_Обновить базу" Click="MenuItem_Click" />
                     <Separator />
                     <MenuItem Header="_Закрыть программу" Click="MenuItem_OnClick">
                     </MenuItem>
                 </MenuItem>
             </Menu>
 
-            <DataGrid Name="TrainsDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True" ItemsSource="{Binding ObjectCollectionViewModels}" SelectionMode="Single" SelectionUnit="FullRow" SelectionChanged="TrainsDataGrid_OnSelectionChanged"  ColumnHeaderHeight="50" LoadingRow="TrainsDataGrid_OnLoadingRow" DockPanel.Dock="Left">
+            <DataGrid Name="TrainsDataGrid" CanUserAddRows="False" CanUserResizeColumns="True" CanUserSortColumns="True" IsReadOnly="True" ItemsSource="{Binding ObjectCollectionViewModels}" SelectionMode="Single" SelectionUnit="FullRow" MouseDoubleClick="TrainsDataGrid_OnMouseDoubleClick"  ColumnHeaderHeight="50" LoadingRow="TrainsDataGrid_OnLoadingRow" DockPanel.Dock="Left">
                 <DataGrid.AutoGenerateColumns>False</DataGrid.AutoGenerateColumns>
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Серийный номер сисемы" Binding="{Binding SystemSerialNumber}" />

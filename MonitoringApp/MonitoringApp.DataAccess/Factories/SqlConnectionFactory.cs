@@ -1,5 +1,7 @@
-﻿using System.Data.Common;
-using System.Data.Entity.Infrastructure;
+﻿
+using System;
+using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 
 namespace MonitoringApp.DataAccess.Factories
@@ -13,7 +15,7 @@ namespace MonitoringApp.DataAccess.Factories
             _connectionString = connectionString;
         }
 
-        public DbConnection CreateConnection(string nameOrConnectionString)
+        IDbConnection IDbConnectionFactory.CreateConnection()
         {
             var conn = new SqlConnection(_connectionString);
             conn.Open();

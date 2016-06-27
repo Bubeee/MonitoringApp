@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Media;
 using MonitoringApp.Infrastructure;
 using Ninject;
@@ -30,14 +29,11 @@ namespace MonitoringApp
             else
             {
                 ValidationLabel.Visibility = Visibility.Visible;
-                ValidationLabel.Foreground = new SolidColorBrush(Color.FromRgb(0, 255, 0));
-                ValidationLabel.Content = "Валидация успешна";
+                ValidationLabel.Content = "Валидация ключа успешна";
             }
-
-            Thread.Sleep(2000);
+            
             IKernel kernel = new StandardKernel(new TrainsNinjectModule());
             kernel.Get<MainWindow>().Show();
-            Close();
         }
     }
 }

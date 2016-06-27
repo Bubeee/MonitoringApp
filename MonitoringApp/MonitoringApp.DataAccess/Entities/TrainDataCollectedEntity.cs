@@ -24,10 +24,12 @@ namespace MonitoringApp.DataAccess.Entities
         public float? Heater1FuelConsumption { get; set; }
         public float? Heater2FuelConsumption { get; set; }
         public float? AirHeaterFuelConsumption { get; set; }
+
         public int? Heater1Flags { get; set; }
         public int? Heater2Flags { get; set; }
         public int? AirHeaterFlags { get; set; }
         public byte? SystemFlags { get; set; }
+
         public double? Latitude { get; set; }
         public double? Longtitude { get; set; }
     }

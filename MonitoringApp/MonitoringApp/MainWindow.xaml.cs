@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using MonitoringApp.BLL;
-using MonitoringApp.DataAccess.Entities;
 using MonitoringApp.Mappers;
 using MonitoringApp.SyncExecutor;
 using MonitoringApp.ViewModels;
@@ -26,9 +26,8 @@ namespace MonitoringApp
             InitializeComponent();
         }
 
-        private void TrainsDataGrid_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void TrainsDataGrid_OnSelectionChanged(object sender, MouseButtonEventArgs mouseButtonEventArgs)
         {
-
         }
 
         private void TrainsDataGrid_OnLoadingRow(object sender, DataGridRowEventArgs e)
@@ -63,6 +62,7 @@ namespace MonitoringApp
         private void BackgroundWorker_OnRunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             TrainsDataGrid.DataContext = e.Result;
+            UpdateButton.IsEnabled = true;
         }
 
         private void BackgroundWorker_OnProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -71,7 +71,24 @@ namespace MonitoringApp
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
-            _backgroundWorker.RunWorkerAsync();
+            UpdateButton.IsEnabled = false;
+            if (_backgroundWorker.IsBusy == false)
+            {
+                _backgroundWorker.RunWorkerAsync();
+            }
+        }
+
+        private void TrainsDataGrid_OnMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var selectedObject = TrainsDataGrid.SelectedItem as ObjectDataViewModel;
+
+            if (selectedObject?.SystemSerialNumber != null)
+            {
+                var objectWindow = new ObjectDetailsWindow(_trainService, _trainDataMapper,
+                    selectedObject.SystemSerialNumber);
+                objectWindow.Owner = this;
+                objectWindow.Show();
+            }
         }
     }
 }

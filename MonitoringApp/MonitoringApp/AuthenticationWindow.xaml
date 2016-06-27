@@ -8,7 +8,7 @@
         Title="Аутентификация" Height="179.389" Width="381.203" Foreground="Lime">
     <Grid>
         <Label x:Name="AuthenticationLabel" Content="Пожалуйста, введите ключ" HorizontalAlignment="Left" Margin="102,21,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="SubmitPassword" Content="Проверить" HorizontalAlignment="Left" Margin="142,60,0,0" VerticalAlignment="Top" Width="75" Click="SubmitPassword_OnClick"/>
-        <Label x:Name="ValidationLabel" Content="Валидация ключа успешна" HorizontalAlignment="Left" Margin="102,93,0,0" VerticalAlignment="Top" Width="162" Foreground="#FF00FF02" Visibility="Hidden" />
+        <Button x:Name="SubmitPassword" Content="Проверить" HorizontalAlignment="Left" Margin="143,61,0,0" VerticalAlignment="Top" Width="75" Click="SubmitPassword_OnClick"/>
+        <Label x:Name="ValidationLabel" Content="Валидация ключа успешна" HorizontalAlignment="Left" Margin="102,96,0,0" VerticalAlignment="Top" Width="162" Foreground="#FF00FF02" Visibility="Hidden"/>
     </Grid>
 </Window>
